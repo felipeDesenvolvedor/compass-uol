@@ -9,25 +9,37 @@ const TableStyled = styled.table.attrs({className:'table table-striped table-dar
     }
 `;
 
+const TableHead = () => {
+    return (
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Avatar</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Repositórios Públicos</th>
+            </tr>
+        </thead>
+    );
+}
+
+const TableBody = ({name, avatarUrl, repositories, perfil}) => {
+    return(
+        <tbody>
+            <tr>
+                <td scope="row">{name}</td>
+                <td><img src={avatarUrl} alt="Avatar de usuario"/></td>
+                <td>{perfil}</td>
+                <td>{repositories}</td>
+            </tr>
+        </tbody>
+    );
+}
+
 const Table = ({name, avatarUrl, repositories, perfil}) => {
     return (
         <TableStyled>
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Avatar</th>
-                    <th scope="col">Perfil</th>
-                    <th scope="col">Repositórios Públicos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">{name}</td>
-                    <td><img src={avatarUrl}/></td>
-                    <td>{perfil}</td>
-                    <td>{repositories}</td>
-                </tr>
-            </tbody>
+            <TableHead />
+            <TableBody name={name} avatarUrl={avatarUrl} repositories={repositories} perfil={perfil}/>
         </TableStyled> 
     );
 };
