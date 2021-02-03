@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import {getUser} from '../../api/index.js';
 
-const InputComponent = styled.input`
-
-`;
+const InputComponent = ({id}) => {
+    return(
+        <input id={id} onInput={getUser}/>
+    );
+};
 
 const Label = styled.label`
     color:var(--color-white);

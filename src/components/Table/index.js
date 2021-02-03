@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const TableStyled = styled.table.attrs({className:'table table-striped table-dark'})`
@@ -22,26 +22,32 @@ const TableHead = () => {
     );
 }
 
-const TableBody = ({name, avatarUrl, repositories, perfil}) => {
+const TableBody = props => {
+    const {userGithub} = props;
+    
     return(
         <tbody>
             <tr>
-                <td scope="row">{name}</td>
-                <td><img src={avatarUrl} alt="Avatar de usuario"/></td>
-                <td>{perfil}</td>
-                <td>{repositories}</td>
+                <td scope="row">{userGithub.name}</td>
+                <td><img src={userGithub.avatarUrl} alt="Avatar de usuario"/></td>
+                <td>{userGithub.perfil}</td>
+                <td>{userGithub.repositories}</td>
             </tr>
         </tbody>
     );
 }
 
-const Table = ({name, avatarUrl, repositories, perfil}) => {
-    return (
-        <TableStyled>
-            <TableHead />
-            <TableBody name={name} avatarUrl={avatarUrl} repositories={repositories} perfil={perfil}/>
-        </TableStyled> 
-    );
-};
+class Table extends Component {
+    render(){
+        const {userGithub} = this.props;
+
+        return(
+            <TableStyled>
+                <TableHead />
+                <TableBody userGithub={userGithub}/>
+            </TableStyled>
+        );
+    }
+}
 
 export default Table;
