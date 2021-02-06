@@ -2,9 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import {getUser} from '../../api/index.js';
 
+const eventHaldler = props => {
+    if(props.keyCode === 13) {
+        getUser(props);
+    }
+};
+
 const InputComponent = ({id}) => {
     return(
-        <input id={id} onInput={getUser}/>
+        <input id={id} onKeyUp={eventHaldler}/>
     );
 };
 
