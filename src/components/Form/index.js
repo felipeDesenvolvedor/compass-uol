@@ -15,8 +15,8 @@ const Form = () => {
         </fieldset> 
 
         <fieldset>
-            <Button>starred</Button>  
-            <Button>repos</Button>
+            <Button className="form__button btn btn-primary" >starred</Button>  
+            <Button className="form__button btn btn-primary">repos</Button>
         </fieldset>  
     </form> 
   );     
