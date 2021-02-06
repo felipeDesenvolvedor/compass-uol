@@ -7,6 +7,7 @@ function App() {
   return (
     <Wrapper>
       <Form />
+      <Table />
     </Wrapper>
   );
 }
