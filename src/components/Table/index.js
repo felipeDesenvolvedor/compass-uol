@@ -22,29 +22,32 @@ const TableHead = () => {
     );
 }
 
-const TableBody = props => {
-    const {userGithub} = props;
-    
+const TableBody = () => {
     return(
         <tbody>
             <tr>
-                <td scope="row">{userGithub.name}</td>
-                <td><img src={userGithub.avatarUrl} alt="Avatar de usuario"/></td>
-                <td>{userGithub.perfil}</td>
-                <td>{userGithub.repositories}</td>
+                <td scope="row"></td>
+                <td><img alt="Avatar de usuario"/></td>
+                <td></td>
+                <td></td>
             </tr>
         </tbody>
     );
 }
 
 class Table extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render(){
         const {userGithub} = this.props;
 
         return(
             <TableStyled>
                 <TableHead />
-                <TableBody userGithub={userGithub}/>
+                <TableBody/>
             </TableStyled>
         );
     }
