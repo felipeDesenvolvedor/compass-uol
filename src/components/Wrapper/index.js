@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import '../../assets/colors.css';
+import Form from "../Form";
+import Table from '../Table';
 
-const Wrapper = styled.div`
+
+const WrapperStyled = styled.div`
     background-color:var(--color-gray-dark);
     width:1000px;
     height:500px;
@@ -10,5 +13,19 @@ const Wrapper = styled.div`
     top:50%;
     transform:translate(-50%, -50%);
 `;
+
+
+const Wrapper = () => {
+    
+    const state = {dataTable:""}
+
+    return (
+        <WrapperStyled>
+            <Form />
+            <Table />
+        </WrapperStyled>
+    );
+}
+
 
 export default Wrapper;

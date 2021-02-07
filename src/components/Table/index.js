@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Avatar from '../Avatar';
 
 const TableStyled = styled.table.attrs({className:'table table-striped table-dark'})`
     color:var(--color-black);
@@ -22,12 +23,13 @@ const TableHead = () => {
     );
 }
 
-const TableBody = () => {
+const TableBody = (props) => {
+    const {userName, userAvatar, userPerfil, userRespositories} = props;
     return(
         <tbody>
             <tr>
                 <td scope="row"></td>
-                <td><img alt="Avatar de usuario"/></td>
+                <td><Avatar srcImg={""} alt="Avatar de usuario"/></td>
                 <td></td>
                 <td></td>
             </tr>
