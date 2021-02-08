@@ -24,35 +24,29 @@ const TableHead = () => {
 }
 
 const TableBody = (props) => {
-    const {userName, userAvatar, userPerfil, userRespositories} = props;
+    const {userName, userAvatar, userPerfil, userRepositories} = props.userGithub;
     return(
         <tbody>
             <tr>
-                <td scope="row"></td>
-                <td><Avatar srcImg={""} alt="Avatar de usuario"/></td>
-                <td></td>
-                <td></td>
+                <td scope="row">{userName}</td>
+                <td><Avatar srcImg={userAvatar} alt="Avatar de usuario"/></td>
+                <td>{userPerfil}</td>
+                <td>{userRepositories}</td>
             </tr>
         </tbody>
     );
 }
 
-class Table extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render(){
-        const {userGithub} = this.props;
-
-        return(
-            <TableStyled>
-                <TableHead />
-                <TableBody/>
-            </TableStyled>
-        );
-    }
+const Table = props => {
+    const userGithub = props.statleTable;
+    
+    return(
+        <TableStyled>
+            <TableHead />
+            <TableBody userGithub={userGithub}/>
+        </TableStyled>
+        
+    );
 }
 
 export default Table;

@@ -1,9 +1,9 @@
 import {getUser} from '../../api/index.js';
 
-const eventKeyUp = props => {
+const eventKeyUp = (props, setTableData) => {
     if(props.keyCode === 13) {
         getUser(props).then(json =>{
-            console.log(json);
+            setTableData({userName:json.name, userAvatar:json.avatar_url, userPerfil:json.html_url, userRepositories:json.public_repos});
         });
     }
 };

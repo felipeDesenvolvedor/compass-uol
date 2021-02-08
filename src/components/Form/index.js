@@ -7,7 +7,8 @@ const eventHaldler = (event) => {
     event.preventDefault();
 }
 
-const Form = () => {
+const Form = (props) => {
+
   return(
     <form onSubmit={eventHaldler}>
         <fieldset>
