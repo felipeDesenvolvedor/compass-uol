@@ -4,7 +4,7 @@ import "../../assets/colors.css";
 
 const Button = (props) => {
     return(
-        <button className={props.className} onClick={props.onClick}>{props.children}</button>
+        <button id={props.id} className={props.className} onClick={props.onClick}>{props.children}</button>
     );
 }
 

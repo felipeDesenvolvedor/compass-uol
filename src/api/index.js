@@ -9,7 +9,7 @@ const getUser = (props) => {
         return resposta.json();
     })
     .then(resposta => {
-        return JSON.parse(resposta);
+        return [JSON.parse(resposta)];
     })
 
 }
@@ -18,8 +18,6 @@ const getUsersRepos = name => {
     var url_string = window.location.href
     var url = new URL(url_string);
     var token = url.searchParams.get("token");
-
-    console.log(name)
     
     return fetch("http://localhost/users_repos/?token="+token+"&nome="+name,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
@@ -30,12 +28,12 @@ const getUsersRepos = name => {
     })
 }
 
-const getUsersStarred = (props) => {
+const getUsersStarred = (name) => {
     var url_string = window.location.href
     var url = new URL(url_string);
     var token = url.searchParams.get("token");
     
-    return fetch("http://localhost/users_starred/?token="+token+"&nome=felipe",{headers:new Headers({"Accept":"application/json"})})
+    return fetch("http://localhost/users_starred/?token="+token+"&nome="+name,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
         return resposta.json();
     })

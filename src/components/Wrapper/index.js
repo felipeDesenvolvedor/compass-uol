@@ -19,16 +19,21 @@ const WrapperStyled = styled.div`
 
 const Wrapper = () => {
     
-    const [tableData, setTableData] = useState({userName:"", userAvatar:"", userPerfil:"", userRepositories:""});
-    const [tableDataRepos, setTableDataRepos] = useState({userName:"", userAvatar:"", userPerfil:"", userRepositories:""});
+    const [tableData, setTableData] = useState([]);
+    const [tableDataRepos, setTableDataRepos] = useState([]);
 
     const search = (props) => {
         eventKeyUp(props, setTableData);
     }
 
-    const haldlerClick = () => {
+    const haldlerClick = (props) => {
         let name = document.querySelector("#nome").value;
-        eventClickRepos(name, setTableDataRepos);
+        
+        if(props.target.id == "btnRepos") {
+            eventClickRepos(name, setTableDataRepos);
+        } else if (props.target.id == "btnStarred") {
+            eventClickStarred(name, setTableDataRepos)
+        }
     }
 
     const eventHaldler = (event) => {
@@ -43,12 +48,12 @@ const Wrapper = () => {
                 </fieldset> 
 
                 <fieldset>
-                    <Button className="form__button btn btn-primary" onClick={haldlerClick}>starred</Button>  
-                    <Button className="form__button btn btn-primary" onClick={haldlerClick}>repos</Button>
+                    <Button id="btnStarred" className="form__button btn btn-primary" onClick={haldlerClick}>starred</Button>  
+                    <Button id="btnRepos" className="form__button btn btn-primary" onClick={haldlerClick}>repos</Button>
                 </fieldset>  
             </form> 
-            <Table statleTable={tableData}/>
-            <Table statleTable={tableDataRepos}/>
+            <Table statleTable={tableData} columns={["Nome", "Avatar", "Perfil", "Qtd.Repositórios Públicos"]}/>
+            <Table statleTable={tableDataRepos} columns={["Nome", "Avatar", "Repositório", "Visibilidade"]}/>
 
             <a className="btn btn-primary" href="http://localhost/login">GIHUB</a>
         </WrapperStyled>

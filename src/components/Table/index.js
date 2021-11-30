@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 
@@ -10,41 +10,43 @@ const TableStyled = styled.table.attrs({className:'table table-striped table-dar
     }
 `;
 
-const TableHead = () => {
+const TableHead = (columns) => {
+
+    const listColumns = columns.children.map((item, index) => (
+        <td key={index} scope="col">{item}</td>
+    ));
+    
     return (
         <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Avatar</th>
-                <th scope="col">Perfil</th>
-                <th scope="col">Repositórios Públicos</th>
-            </tr>
+            <tr>{listColumns}</tr>
         </thead>
     );
 }
 
 const TableBody = (props) => {
-    const {userName, userAvatar, userPerfil, userRepositories} = props.state;
+    const buildLista = props.state.map((item, index) => (
+        <tr key={index}>
+            <td scope="row">{item.name}</td>
+            <td><Avatar srcImg={item.avatar_url || item.owner.avatar_url} alt="Avatar de usuario"/></td>
+            <td><a href={item.html_url} target="_blank">{item.html_url}</a></td>
+            <td>{item.public_repos || item.visibility}</td>
+        </tr>
+    ));
+
     return(
         <tbody>
-            <tr>
-                <td scope="row">{userName}</td>
-                <td><Avatar srcImg={userAvatar} alt="Avatar de usuario"/></td>
-                <td><a href={userPerfil} target="_blank">{userPerfil}</a></td>
-                <td>{userRepositories}</td>
-            </tr>
+            {buildLista}
         </tbody>
     );
 }
 
 const Table = props => {
     const state = props.statleTable;
-
-    console.log(state);
+    const columns = props.columns;
     
     return(
         <TableStyled>
-            <TableHead />
+            <TableHead>{columns}</TableHead>
             <TableBody state={state}/>
         </TableStyled>
         
