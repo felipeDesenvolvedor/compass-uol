@@ -1,11 +1,10 @@
-import styled from 'styled-components';
 import "../../assets/button.css";
 import "../../assets/colors.css";
 
 
 const Button = (props) => {
     return(
-        <button className={props.className}>{props.children}</button>
+        <button className={props.className} onClick={props.onClick}>{props.children}</button>
     );
 }
 

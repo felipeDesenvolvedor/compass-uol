@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 
@@ -24,13 +24,13 @@ const TableHead = () => {
 }
 
 const TableBody = (props) => {
-    const {userName, userAvatar, userPerfil, userRepositories} = props.userGithub;
+    const {userName, userAvatar, userPerfil, userRepositories} = props.state;
     return(
         <tbody>
             <tr>
                 <td scope="row">{userName}</td>
                 <td><Avatar srcImg={userAvatar} alt="Avatar de usuario"/></td>
-                <td>{userPerfil}</td>
+                <td><a href={userPerfil} target="_blank">{userPerfil}</a></td>
                 <td>{userRepositories}</td>
             </tr>
         </tbody>
@@ -38,12 +38,14 @@ const TableBody = (props) => {
 }
 
 const Table = props => {
-    const userGithub = props.statleTable;
+    const state = props.statleTable;
+
+    console.log(state);
     
     return(
         <TableStyled>
             <TableHead />
-            <TableBody userGithub={userGithub}/>
+            <TableBody state={state}/>
         </TableStyled>
         
     );

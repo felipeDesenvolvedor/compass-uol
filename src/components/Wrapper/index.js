@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import '../../assets/colors.css';
 import Button from "../Button";
-import {eventKeyUp} from '../Events';
+import {eventKeyUp, eventClickStarred, eventClickRepos} from '../Events';
 import Table from '../Table';
 
 
@@ -20,9 +20,15 @@ const WrapperStyled = styled.div`
 const Wrapper = () => {
     
     const [tableData, setTableData] = useState({userName:"", userAvatar:"", userPerfil:"", userRepositories:""});
+    const [tableDataRepos, setTableDataRepos] = useState({userName:"", userAvatar:"", userPerfil:"", userRepositories:""});
 
     const search = (props) => {
         eventKeyUp(props, setTableData);
+    }
+
+    const haldlerClick = () => {
+        let name = document.querySelector("#nome").value;
+        eventClickRepos(name, setTableDataRepos);
     }
 
     const eventHaldler = (event) => {
@@ -33,15 +39,18 @@ const Wrapper = () => {
         <WrapperStyled>
             <form onSubmit={eventHaldler}>
                 <fieldset>
-                    <input onKeyUp={search}/>
+                    <input id="nome" onKeyUp={search}/>
                 </fieldset> 
 
                 <fieldset>
-                    <Button className="form__button btn btn-primary" >starred</Button>  
-                    <Button className="form__button btn btn-primary">repos</Button>
+                    <Button className="form__button btn btn-primary" onClick={haldlerClick}>starred</Button>  
+                    <Button className="form__button btn btn-primary" onClick={haldlerClick}>repos</Button>
                 </fieldset>  
             </form> 
             <Table statleTable={tableData}/>
+            <Table statleTable={tableDataRepos}/>
+
+            <a className="btn btn-primary" href="http://localhost/login">GIHUB</a>
         </WrapperStyled>
     );
 }
