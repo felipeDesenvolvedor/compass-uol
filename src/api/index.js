@@ -1,8 +1,8 @@
-const getUser = (props) => {
-    var url_string = window.location.href
-    var url = new URL(url_string);
-    var token = url.searchParams.get("token");
-    let user = props.target.value;
+const getUser = (name) => {
+    let dataToken = decodeURIComponent(document.cookie).split("=");
+    var token = dataToken[1]
+
+    let user = name;
     
     return fetch("http://localhost/users/?token="+token+"&nome="+user,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
@@ -15,9 +15,8 @@ const getUser = (props) => {
 }
 
 const getUsersRepos = name => {
-    var url_string = window.location.href
-    var url = new URL(url_string);
-    var token = url.searchParams.get("token");
+    let dataToken = decodeURIComponent(document.cookie).split("=");
+    var token = dataToken[1]
     
     return fetch("http://localhost/users_repos/?token="+token+"&nome="+name,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
@@ -29,9 +28,8 @@ const getUsersRepos = name => {
 }
 
 const getUsersStarred = (name) => {
-    var url_string = window.location.href
-    var url = new URL(url_string);
-    var token = url.searchParams.get("token");
+    let dataToken = decodeURIComponent(document.cookie).split("=");
+    var token = dataToken[1]
     
     return fetch("http://localhost/users_starred/?token="+token+"&nome="+name,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
@@ -42,4 +40,25 @@ const getUsersStarred = (name) => {
     })
 }
 
-export {getUser, getUsersRepos, getUsersStarred};
+const nameUser = () => {
+    if(window.location.pathname.length > 1) {
+        let dataToken = decodeURIComponent(document.cookie).split("=");
+        var token = dataToken[1]
+    
+        let user = window.location.pathname.slice(1);
+        
+        return fetch("http://localhost/users/?token="+token+"&nome="+user,{headers:new Headers({"Accept":"application/json"})})
+        .then(resposta =>{
+            return resposta.json();
+        })
+        .then(resposta => {
+            return JSON.parse(resposta);
+        })
+    }else {
+        return new Promise(function(resolve, reject){
+            reject("Nenhuma consulta realizada!!")
+        })
+    }
+}
+
+export {getUser, getUsersRepos, getUsersStarred, nameUser};
