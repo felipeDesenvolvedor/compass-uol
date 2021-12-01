@@ -9,6 +9,7 @@ const getUser = (name) => {
         return resposta.json();
     })
     .then(resposta => {
+        console.log(JSON.parse(resposta))
         return [JSON.parse(resposta)];
     })
 
@@ -18,11 +19,23 @@ const getUsersRepos = name => {
     let dataToken = decodeURIComponent(document.cookie).split("=");
     var token = dataToken[1]
     
-    return fetch("http://localhost/users_repos/?token="+token+"&nome="+name,{headers:new Headers({"Accept":"application/json"})})
+    var urlbase = "http://localhost/users_repos/";
+
+    let params = (new URL(document.location)).searchParams;
+    let page = ""
+
+    if(params.get("page")) {
+        page = params.get("page").toString();
+    }else {
+        page = 1;
+    }
+    
+    return fetch(`http://localhost/users_repos/?token=${token}&nome=${name}${page ? '&page='+page:""}`,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
         return resposta.json();
     })
     .then(resposta => {
+        console.log(JSON.parse(resposta))
         return JSON.parse(resposta);
     })
 }
@@ -36,6 +49,7 @@ const getUsersStarred = (name) => {
         return resposta.json();
     })
     .then(resposta => {
+        console.log(JSON.parse(resposta))
         return JSON.parse(resposta);
     })
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import '../../assets/colors.css';
 import {nameUser} from '../../api/index.js';
+import {controlPaginate} from '../../utils/index';
 import Button from "../Button";
 import {eventKeyUp, eventClickStarred, eventClickRepos} from '../Events';
 import Table from '../Table';
@@ -20,6 +21,7 @@ const WrapperStyled = styled.div`
 
 const Wrapper = () => {
 
+    // const [statePaginate, setStatePaginate] = useState(1);
     const [stateRequest, setStateRequest] = useState([]);
     const [tableData, setTableData] = useState([]);
     const [tableDataRepos, setTableDataRepos] = useState([]);
@@ -48,6 +50,23 @@ const Wrapper = () => {
         } else if (props.target.id == "btnStarred") {
             eventClickStarred(name, setTableDataRepos)
         }
+    }
+
+    const haldlerPaginate = (props) => {
+        controlPaginate(props.target.innerHTML)
+
+        let name = document.querySelector("#nome").value || window.location.pathname.slice(1);
+        
+        if(!name) {
+            document.querySelector("#nome").setAttribute("required", "required")
+            return;
+        }
+
+        // if(props.target.id == "btnRepos") {
+            eventClickRepos(name, setTableDataRepos);
+        // } else if (props.target.id == "btnStarred") {
+            // eventClickStarred(name, setTableDataRepos)
+        // }
     }
 
     const eventHaldler = (event) => {
@@ -79,7 +98,12 @@ const Wrapper = () => {
                 </fieldset>  
             </form> 
             <Table statleTable={tableData} columns={["Nome", "Avatar", "Perfil", "Qtd.Repositórios Públicos"]}/>
-            <Table statleTable={tableDataRepos} columns={["Nome", "Avatar", "Repositório", "Visibilidade"]}/>
+            <Table statleTable={tableDataRepos} columns={["Nome do Repositório", "Avatar", "Url do Repositório", "Visibilidade"]}/>
+        
+            <Button className="btnPaginate form__button btn btn-primary" onClick={haldlerPaginate}>1</Button>
+            <Button className="btnPaginate form__button btn btn-primary" onClick={haldlerPaginate}>2</Button>
+            <Button className="btnPaginate form__button btn btn-primary" onClick={haldlerPaginate}>3</Button>
+            <Button className="btnPaginate form__button btn btn-primary" onClick={haldlerPaginate}>4</Button>
         </WrapperStyled>
     );
 }
