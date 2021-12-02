@@ -26,20 +26,35 @@ const TableHead = (columns) => {
 }
 
 const TableBody = (props) => {
-    const buildLista = props.state.map((item, index) => (
-        <tr key={index}>
-            <td scope="row">{item.name}</td>
-            <td><Avatar srcImg={item.avatar_url || item.owner.avatar_url} alt="Avatar de usuario"/></td>
-            <td><a href={item.html_url} target="_blank">{item.html_url}</a></td>
-            <td>{item.public_repos || item.visibility}</td>
-        </tr>
-    ));
 
-    return(
-        <tbody>
-            {buildLista}
-        </tbody>
-    );
+    if(props.state.length && !props.state[0].message) {
+        const buildLista = props.state.map((item, index) => (
+    
+            <tr key={index}>
+                <td scope="row">{item.name ? item.name : ""}</td>
+                <td><Avatar srcImg={item.avatar_url || item.owner.avatar_url} alt="Avatar de usuario"/></td>
+                <td><a href={item.html_url} target="_blank">{item.html_url}</a></td>
+                <td>{item.public_repos || item.visibility}</td>
+            </tr>
+        ));
+    
+        return(
+            <tbody>
+                {buildLista}
+            </tbody>
+        );
+    }else {
+        return(
+            <tbody>
+                 <tr>
+                    <td scope="row"></td>
+                    <td><Avatar srcImg={""} alt="Avatar de usuario"/></td>
+                    <td><a href={""} target="_blank">{""}</a></td>
+                    <td>{""}</td>
+                 </tr>
+            </tbody>
+        );
+    } 
 }
 
 const Table = props => {

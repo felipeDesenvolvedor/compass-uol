@@ -1,12 +1,12 @@
-import {activeLoading} from '../utils/index';
+import {activeLoading, getUrlParametro} from '../utils/index';
 
 const getUser = (name) => {
     let dataToken = decodeURIComponent(document.cookie).split("=");
-    var token = dataToken[1]
+    var token = getUrlParametro();
 
     let user = name;
     
-    return fetch("http://localhost/users/?token="+token+"&nome="+user,{headers:new Headers({"Accept":"application/json"})})
+    return fetch("https://felipedesenvolvedor.com/users/?token="+token+"&nome="+user,{headers:new Headers({"Accept":"application/json"})})
     .then(resposta =>{
         return resposta.json();
     })
@@ -19,9 +19,9 @@ const getUser = (name) => {
 
 const getUsersRepos = name => {
     let dataToken = decodeURIComponent(document.cookie).split("=");
-    var token = dataToken[1]
+    var token = getUrlParametro();
     
-    var urlbase = "http://localhost/users_repos/";
+    var urlbase = "https://felipedesenvolvedor.com/users_repos/";
 
     let params = (new URL(document.location)).searchParams;
     let page = ""
@@ -45,9 +45,9 @@ const getUsersRepos = name => {
 
 const getUsersStarred = (name) => {
     let dataToken = decodeURIComponent(document.cookie).split("=");
-    var token = dataToken[1]
+    var token = getUrlParametro();
 
-    var urlbase = "http://localhost/users_starred/";
+    var urlbase = "https://felipedesenvolvedor.com/users_starred/";
 
     let params = (new URL(document.location)).searchParams;
     let page = ""
@@ -72,11 +72,11 @@ const getUsersStarred = (name) => {
 const nameUser = () => {
     if(window.location.pathname.length > 1) {
         let dataToken = decodeURIComponent(document.cookie).split("=");
-        var token = dataToken[1]
+        var token = getUrlParametro();
     
         let user = window.location.pathname.slice(1);
         
-        return fetch("http://localhost/users/?token="+token+"&nome="+user,{headers:new Headers({"Accept":"application/json"})})
+        return fetch("https://felipedesenvolvedor.com/users/?token="+token+"&nome="+user,{headers:new Headers({"Accept":"application/json"})})
         .then(resposta =>{
             return resposta.json();
         })

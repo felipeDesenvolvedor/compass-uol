@@ -1,14 +1,12 @@
 import {getUser, getUsersRepos, getUsersStarred} from '../../api/index.js';
 import {activeLoading} from '../../utils/index.js';
 
-const eventKeyUp = (props, setTableData) => {
+const eventKeyUp = (name, setTableData) => {
     activeLoading("tbUser");
 
-    if(props.keyCode === 13) {
-        getUser(props.target.value).then(json =>{
+        getUser(name).then(json =>{
             setTableData(json);
         });
-    }
 };
 
 const eventClickStarred = (name, setTableData) => {

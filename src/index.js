@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {getUrlParametro} from './utils/index';
 import {
   BrowserRouter,
   Routes,
@@ -13,7 +14,7 @@ ReactDOM.render(
   <BrowserRouter>
    <Routes>
       <Route path="*" element={
-        document.cookie.indexOf("expires") > 0 ? <Login /> : <App />
+        getUrlParametro() == 'null' || ''? <Login /> : <App />
       }/>
     
     </Routes>

@@ -25,7 +25,7 @@ function Login() {
         <LoginStyled>
           <GitIcon src={GitIconSRC}/>
 
-          <a href="http://localhost/login" className="btn btn-primary"> 
+          <a href="https://felipedesenvolvedor.com/login" className="btn btn-primary"> 
             Signing in
           </a>
         </LoginStyled>
