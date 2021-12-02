@@ -1,7 +1,19 @@
 .form__button {
   background-color: var(--color-uol);
   border: solid 1px var(--color-uol);
-  margin: 0 10px; }
+  margin: 0 10px;
+  color: var(--color-black); }
   .form__button:hover {
     background-color: var(--color-uol);
     border: solid 1px var(--color-uol); }
+
+#btnSearch {
+  background-color: var(--color-uol);
+  color: var(--color-black); }
+
+#btnRepos {
+  margin-right: 0; }
+
+#btnRepos,
+#btnStarred {
+  border-radius: 0; }

@@ -1,9 +1,10 @@
+import "../../assets/table.css";
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 
-const TableStyled = styled.table.attrs({className:'table table-striped table-dark'})`
-    color:var(--color-black);
+const TableStyled = styled.table.attrs({className:'table table-striped table-dark table-hover table-sm'})`
+    color:var(--color-white);
 
     & img {
         width:40px;
@@ -43,6 +44,7 @@ const TableBody = (props) => {
 const Table = props => {
     const state = props.statleTable;
     const columns = props.columns;
+    const caption = props.caption;
     
     return(
         <TableStyled>
