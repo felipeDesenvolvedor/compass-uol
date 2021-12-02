@@ -3,3 +3,7 @@
   --color-black:#000;
   --color-uol:#f7b718;
   --color-gray-dark:#252525; }
+
+  body {
+    background-color:var(--color-gray-dark);
+  }
