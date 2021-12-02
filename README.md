@@ -15,4 +15,4 @@ Passos para o teste
 
 1) Clickar em Signing in
 2) Realize o login com seu usuário para se autenticar
-3) Siga com os teste.
+3) Siga com os testes.
