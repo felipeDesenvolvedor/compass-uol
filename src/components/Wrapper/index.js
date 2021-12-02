@@ -21,7 +21,6 @@ const WrapperStyled = styled.div`
 
 const Wrapper = () => {
 
-    // const [statePaginate, setStatePaginate] = useState(1);
     const [stateRequest, setStateRequest] = useState([]);
     const [tableData, setTableData] = useState([]);
     const [tableDataRepos, setTableDataRepos] = useState([]);
@@ -62,11 +61,7 @@ const Wrapper = () => {
             return;
         }
 
-        // if(props.target.id == "btnRepos") {
-            eventClickRepos(name, setTableDataRepos);
-        // } else if (props.target.id == "btnStarred") {
-            // eventClickStarred(name, setTableDataRepos)
-        // }
+        eventClickRepos(name, setTableDataRepos);
     }
 
     const eventHaldler = (event) => {

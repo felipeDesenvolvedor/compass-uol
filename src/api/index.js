@@ -9,7 +9,6 @@ const getUser = (name) => {
         return resposta.json();
     })
     .then(resposta => {
-        console.log(JSON.parse(resposta))
         return [JSON.parse(resposta)];
     })
 
@@ -35,7 +34,6 @@ const getUsersRepos = name => {
         return resposta.json();
     })
     .then(resposta => {
-        console.log(JSON.parse(resposta))
         return JSON.parse(resposta);
     })
 }
@@ -49,7 +47,6 @@ const getUsersStarred = (name) => {
         return resposta.json();
     })
     .then(resposta => {
-        console.log(JSON.parse(resposta))
         return JSON.parse(resposta);
     })
 }

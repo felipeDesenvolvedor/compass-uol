@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Login from './components/Login';
 import App from './App';
-import Table from './App';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -16,10 +15,6 @@ ReactDOM.render(
       <Route path="*" element={
         document.cookie.indexOf("expires") > 0 ? <Login /> : <App />
       }/>
-
-    <Route path=":page" element={
-      <App />
-    }/>
     
     </Routes>
   </BrowserRouter>,
