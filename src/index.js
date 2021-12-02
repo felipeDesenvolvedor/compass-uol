@@ -14,7 +14,7 @@ ReactDOM.render(
   <BrowserRouter>
    <Routes>
       <Route path="*" element={
-        getUrlParametro() == 'null' || ''? <Login /> : <App />
+        getUrlParametro() == 'null' || getUrlParametro() == '' ? <Login /> : <App />
       }/>
     
     </Routes>

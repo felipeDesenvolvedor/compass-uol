@@ -11,7 +11,7 @@ const activeLoading = (elementId) => {
 
 const getUrlParametro = () => {
 
-    if(localStorage.getItem("token")) {
+    if(localStorage.getItem("token") != "null") {
         return localStorage.getItem("token");
     }
 
@@ -20,13 +20,6 @@ const getUrlParametro = () => {
     localStorage.setItem("token",token)
 
     return localStorage.getItem("token")
-
-    if(token || localStorage.getItem("token")) {
-        return localStorage.getItem("token");
-    }else {
-        localStorage.removeItem("token")
-        return false;
-    }
 }
 
 export {controlPaginate, activeLoading, getUrlParametro};
