@@ -11,10 +11,12 @@ const activeLoading = (elementId) => {
 
 const getUrlParametro = () => {
 
-    if(localStorage.getItem("token") != "null") {
+    if(localStorage.getItem("token") != 'null' && localStorage.getItem("token") != '' && localStorage.getItem("token") != null) {
+        console.log("if")
         return localStorage.getItem("token");
     }
 
+    console.log("else")
     let params = (new URL(document.location)).searchParams;
     let token = params.get("token");
     localStorage.setItem("token",token)

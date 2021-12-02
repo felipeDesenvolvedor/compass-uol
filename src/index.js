@@ -13,9 +13,7 @@ import App from './App';
 ReactDOM.render(
   <BrowserRouter>
    <Routes>
-      <Route path="*" element={
-        getUrlParametro() == 'null' || getUrlParametro() == '' ? <Login /> : <App />
-      }/>
+      <Route path="*" element={getUrlParametro() == 'null' || getUrlParametro() == null ? <Login /> : <App /> }/>
     
     </Routes>
   </BrowserRouter>,
