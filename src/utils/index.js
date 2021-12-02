@@ -5,4 +5,8 @@ const controlPaginate = (page) => {
     window.history.pushState(1, "Teste", `${origin}${pathName}?page=`+parseInt(page))
 }
 
-export {controlPaginate};
+const activeLoading = (elementId) => {
+    document.querySelector(`#${elementId}`).classList.toggle("loading");
+}
+
+export {controlPaginate, activeLoading};

@@ -1,4 +1,5 @@
 import "../../assets/table.css";
+import "../../assets/loading.css";
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
@@ -44,14 +45,13 @@ const TableBody = (props) => {
 const Table = props => {
     const state = props.statleTable;
     const columns = props.columns;
-    const caption = props.caption;
+    const id = props.id;
     
     return(
-        <TableStyled>
+        <TableStyled id={id}>
             <TableHead>{columns}</TableHead>
             <TableBody state={state}/>
-        </TableStyled>
-        
+        </TableStyled>  
     );
 }
 

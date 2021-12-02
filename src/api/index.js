@@ -1,3 +1,5 @@
+import {activeLoading} from '../utils/index';
+
 const getUser = (name) => {
     let dataToken = decodeURIComponent(document.cookie).split("=");
     var token = dataToken[1]
@@ -9,9 +11,10 @@ const getUser = (name) => {
         return resposta.json();
     })
     .then(resposta => {
+
+        activeLoading("tbUser");
         return [JSON.parse(resposta)];
     })
-
 }
 
 const getUsersRepos = name => {
@@ -34,6 +37,8 @@ const getUsersRepos = name => {
         return resposta.json();
     })
     .then(resposta => {
+
+        activeLoading("tbRepos");
         return JSON.parse(resposta);
     })
 }
@@ -58,6 +63,8 @@ const getUsersStarred = (name) => {
         return resposta.json();
     })
     .then(resposta => {
+
+        activeLoading("tbRepos");
         return JSON.parse(resposta);
     })
 }
@@ -74,10 +81,13 @@ const nameUser = () => {
             return resposta.json();
         })
         .then(resposta => {
+
+            activeLoading("tbUser");
             return JSON.parse(resposta);
         })
     }else {
         return new Promise(function(resolve, reject){
+            activeLoading("tbUser");
             reject("Nenhuma consulta realizada!!")
         })
     }
